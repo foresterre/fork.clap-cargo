@@ -2,6 +2,9 @@
 
 use std::path;
 
+#[cfg(feature = "cargo_metadata")]
+use cargo_msrv_cargo_metadata as cargo_metadata;
+
 /// Cargo flag for selecting the relevant crate.
 #[derive(Default, Clone, Debug, PartialEq, Eq)]
 #[cfg_attr(feature = "clap", derive(clap::Args))]

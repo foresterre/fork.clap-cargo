@@ -7,14 +7,14 @@ license = "MIT OR Apache-2.0"
 edition = "2021"
 rust-version = "1.74"  # MSRV
 include = [
-  "build.rs",
-  "src/**/*",
-  "Cargo.toml",
-  "Cargo.lock",
-  "LICENSE*",
-  "README.md",
-  "benches/**/*",
-  "examples/**/*"
+    "build.rs",
+    "src/**/*",
+    "Cargo.toml",
+    "Cargo.lock",
+    "LICENSE*",
+    "README.md",
+    "benches/**/*",
+    "examples/**/*"
 ]
 
 [workspace.lints.rust]
@@ -86,8 +86,8 @@ wildcard_imports = "warn"
 zero_sized_map_values = "warn"
 
 [package]
-name = "clap-cargo"
-version = "0.15.2"
+name = "cargo-msrv-clap-cargo"
+version = "0.15.3-unofficial.1-cargo-msrv"
 description = "Re-usable CLI flags for `cargo` plugins"
 categories = ["development-tools::cargo-plugins"]
 keywords = ["cargo"]
@@ -103,21 +103,21 @@ rustdoc-args = ["--cfg", "docsrs"]
 
 [package.metadata.release]
 pre-release-replacements = [
-  {file="CHANGELOG.md", search="Unreleased", replace="{{version}}", min=1},
-  {file="CHANGELOG.md", search="\\.\\.\\.HEAD", replace="...{{tag_name}}", exactly=1},
-  {file="CHANGELOG.md", search="ReleaseDate", replace="{{date}}", min=1},
-  {file="CHANGELOG.md", search="<!-- next-header -->", replace="<!-- next-header -->\n## [Unreleased] - ReleaseDate\n", exactly=1},
-  {file="CHANGELOG.md", search="<!-- next-url -->", replace="<!-- next-url -->\n[Unreleased]: https://github.com/crate-ci/clap-cargo/compare/{{tag_name}}...HEAD", exactly=1},
+    { file = "CHANGELOG.md", search = "Unreleased", replace = "{{version}}", min = 1 },
+    { file = "CHANGELOG.md", search = "\\.\\.\\.HEAD", replace = "...{{tag_name}}", exactly = 1 },
+    { file = "CHANGELOG.md", search = "ReleaseDate", replace = "{{date}}", min = 1 },
+    { file = "CHANGELOG.md", search = "<!-- next-header -->", replace = "<!-- next-header -->\n## [Unreleased] - ReleaseDate\n", exactly = 1 },
+    { file = "CHANGELOG.md", search = "<!-- next-url -->", replace = "<!-- next-url -->\n[Unreleased]: https://github.com/crate-ci/clap-cargo/compare/{{tag_name}}...HEAD", exactly = 1 },
 ]
 
 [features]
 default = ["clap"]
 clap = ["dep:clap"]
-cargo_metadata = ["dep:cargo_metadata", "dep:serde", "dep:serde_json"]
+cargo_metadata = ["dep:cargo-msrv-cargo_metadata", "dep:serde", "dep:serde_json"]
 
 [dependencies]
 anstyle = "1.0.3"
-cargo_metadata = { version = "0.19", optional = true }
+cargo-msrv-cargo_metadata = { version = "0.19.2-unoffical.2-cargo-msrv", optional = true }
 clap = { version = "4.4.1", default-features = false, features = ["std", "derive"], optional = true }
 
 [target.'cfg(any())'.dependencies]

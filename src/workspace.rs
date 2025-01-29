@@ -1,5 +1,8 @@
 //! Cargo flags for selecting crates in a workspace.
 
+#[cfg(feature = "cargo_metadata")]
+use cargo_msrv_cargo_metadata as cargo_metadata;
+
 /// Cargo flags for selecting crates in a workspace.
 #[derive(Default, Clone, Debug, PartialEq, Eq)]
 #[cfg_attr(feature = "clap", derive(clap::Args))]
@@ -44,9 +47,9 @@ impl Workspace {
 
         let base_ids: std::collections::HashSet<_> = match selection {
             // workspace_default_members requires cargo >= 1.71
-            Packages::Default if meta.workspace_default_members.is_available() =>  {
+            Packages::Default if meta.workspace_default_members.is_available() => {
                 meta.workspace_default_members.iter().collect()
-            },
+            }
             // If workspace_default_members is unavailable, default to workspace
             Packages::All | Packages::Default => workspace_members,
             Packages::OptOut(_) => workspace_members, // Deviating from cargo by only checking workspace members

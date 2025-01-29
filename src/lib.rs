@@ -6,6 +6,7 @@
 //! # #[cfg(feature = "clap")] {
 //! # #[cfg(feature = "cargo_metadata")] {
 //! use clap::Parser;
+//! use cargo_msrv_clap_cargo as clap_cargo;
 //!
 //! // ...
 //! #[derive(Debug, Parser)]

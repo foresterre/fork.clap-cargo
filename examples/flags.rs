@@ -1,5 +1,7 @@
 use clap::Parser;
 
+use cargo_msrv_clap_cargo as clap_cargo;
+
 #[derive(Debug, Parser)]
 struct Cli {
     #[clap(flatten)]
